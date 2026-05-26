@@ -21,7 +21,7 @@ export default function DownloadPage() {
               <p className="download-desc">Full performance with local ONNX Runtime execution for Windows, macOS, and Linux.</p>
 
               <div className="download-links">
-                <a href="https://github.com/Rieko00/CHANCE/releases/download/V1.0.0/CHANCE.V1.0.0.msix" className="btn-primary download-btn" style={{ opacity: 0.5 }}>
+                <a href="https://github.com/Rieko00/CHANCE/releases/download/V1.0.0/CHANCE.V1.0.0.msix" className="btn-primary download-btn">
                   <Download size={16} /> Windows (.msix)
                 </a>
                 <a href="#" style={{ opacity: 0.5, cursor: 'not-allowed' }} className="btn-secondary download-btn">
@@ -42,7 +42,7 @@ export default function DownloadPage() {
               <p className="download-desc">Scan and review CXR results on the go. Optimized for mobile inference.</p>
 
               <div className="download-links">
-                <a href="https://github.com/Rieko00/CHANCE/releases/download/V1.0.0/CHANCE.V1.0.0.apk" className="btn-primary download-btn" style={{ opacity: 0.5}}>
+                <a href="https://github.com/Rieko00/CHANCE/releases/download/V1.0.0/CHANCE.V1.0.0.apk" className="btn-primary download-btn">
                   <Download size={16} /> Android (.apk)
                 </a>
                 <a href="#" className="btn-secondary download-btn" style={{ opacity: 0.5, cursor: 'not-allowed' }}>
