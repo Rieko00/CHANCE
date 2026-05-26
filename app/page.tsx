@@ -1,65 +1,151 @@
-import Image from "next/image";
+import Link from 'next/link';
+import {
+  Stethoscope, Scan, Brain, ShieldCheck, Zap, FileImage,
+  ArrowRight, Database, Microscope
+} from 'lucide-react';
 
-export default function Home() {
+const features = [
+  {
+    icon: Brain,
+    title: 'YOLOv8 AI Engine',
+    desc: 'State-of-the-art object detection model trained on CXR datasets for precise nodule mass localisation.',
+    color: 'var(--accent-bright)',
+  },
+  {
+    icon: FileImage,
+    title: 'Multi-Format Support',
+    desc: 'Upload CXR images in JPG, PNG, BMP, or raw DICOM (.dcm) format with automatic processing.',
+    color: 'var(--nodule-mass)',
+  },
+  {
+    icon: Zap,
+    title: 'Real-time Inference',
+    desc: 'ONNX Runtime with Web Worker ensures blazing-fast detection directly in your browser.',
+    color: 'var(--success)',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Nodule Mass Detection',
+    desc: 'Detects nodule masses in chest X-ray scans with confidence scores for transparent clinical reporting.',
+    color: 'var(--danger)',
+  },
+  {
+    icon: Database,
+    title: 'Batch Processing',
+    desc: 'Analyse multiple CXR scans simultaneously with progress tracking and per-scan status overview.',
+    color: '#a78bfa',
+  },
+  {
+    icon: Microscope,
+    title: 'Annotated Results',
+    desc: 'Bounding boxes drawn directly onto CXR images with colour-coded labels, ready for PDF export.',
+    color: '#38bdf8',
+  },
+];
+
+const steps = [
+  { num: '01', title: 'Upload', desc: 'Drag & drop your CXR scan (DICOM, PNG, JPG or BMP).' },
+  { num: '02', title: 'Detect', desc: 'Hit "Run Detection" and the model infers in seconds.' },
+  { num: '03', title: 'Review', desc: 'Inspect annotated results with bounding boxes and export PDF.' },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="home-page">
+
+      {/* ─── Hero ─────────────────────────────────────────────── */}
+      <section className="hero-section">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-badge">
+            <ShieldCheck size={14} />
+            <span>AI-Powered CXR Analysis</span>
+          </div>
+
+          <h1 className="hero-title">
+            Advanced <span className="hero-accent">Nodule Mass</span><br />
+            Detection for CXR
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="hero-desc">
+            CHANCE leverages state-of-the-art deep learning to detect nodule masses
+            in chest X-ray scans with high accuracy — supporting DICOM, PNG, JPG and BMP formats.
           </p>
+
+          <div className="hero-actions">
+            <Link href="/scan" className="btn-primary hero-cta no-underline" id="hero-scan-btn">
+              <Scan size={20} /> Launch Scanner
+            </Link>
+            <Link href="/about" className="btn-secondary hero-cta no-underline" id="hero-about-btn">
+              Learn More
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ─── Features ─────────────────────────────────────────── */}
+      <section className="section">
+        <div className="section-inner">
+          <div className="section-tag">Features</div>
+          <h2 className="section-title">Everything you need for<br />CXR nodule analysis</h2>
+          <div className="features-grid">
+            {features.map(({ icon: Icon, title, desc, color }) => (
+              <div key={title} className="feature-card">
+                <div className="feature-icon" style={{ color }}>
+                  <Icon size={26} />
+                </div>
+                <h3 className="feature-title">{title}</h3>
+                <p className="feature-desc">{desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ─── How it works ─────────────────────────────────────── */}
+      <section className="section section-alt">
+        <div className="section-inner">
+          <div className="section-tag">Workflow</div>
+          <h2 className="section-title">Three steps to detection</h2>
+          <div className="steps-row">
+            {steps.map(({ num, title, desc }, i) => (
+              <div key={num} className="step-card">
+                <div className="step-num">{num}</div>
+                <h3 className="step-title">{title}</h3>
+                <p className="step-desc">{desc}</p>
+                {i < steps.length - 1 && <div className="step-arrow" aria-hidden="true"><ArrowRight size={20} /></div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Detection Class ──────────────────────────────────── */}
+      <section className="section">
+        <div className="section-inner">
+          <div className="section-tag">Classification</div>
+          <h2 className="section-title">Detection class</h2>
+          <div className="classes-grid" style={{ maxWidth: 480, margin: '0' }}>
+            <div className="class-card" style={{ background: 'var(--nodule-mass-bg)', borderColor: 'var(--nodule-mass-border)' }}>
+              <div className="class-dot" style={{ background: 'var(--nodule-mass)' }} />
+              <h3 className="class-label" style={{ color: 'var(--nodule-mass)' }}>Nodule Mass</h3>
+              <p className="class-desc">Suspicious nodular opacity or mass detected in the chest X-ray. Requires clinical correlation and follow-up imaging for definitive diagnosis.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA Banner ───────────────────────────────────────── */}
+      <section className="cta-section">
+        <div className="cta-inner">
+          <Stethoscope size={40} style={{ color: 'var(--accent-bright)', marginBottom: '1rem' }} />
+          <h2 className="cta-title">Ready to analyse your CXR scans?</h2>
+          <p className="cta-desc">Upload chest X-ray images and get instant AI-powered analysis.</p>
+          <Link href="/scan" className="btn-primary no-underline" id="cta-scan-btn" style={{ fontSize: '1rem', padding: '14px 36px' }}>
+            <Scan size={18} /> Launch Scanner
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
