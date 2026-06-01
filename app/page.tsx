@@ -69,7 +69,7 @@ export default function HomePage() {
 
           <p className="hero-desc">
             CHANCE leverages state-of-the-art deep learning to detect nodule masses
-            in chest X-ray scans with high accuracy — supporting PNG, JPG and BMP formats.
+            in chest X-ray scans with high accuracy supporting PNG, JPG and BMP formats.
           </p>
 
           <div className="hero-actions">

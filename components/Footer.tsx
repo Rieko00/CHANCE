@@ -15,7 +15,7 @@ export default function Footer() {
             style={{ objectFit: 'contain' }}
           />
           <div className="footer-desc">
-            Chest Automated Nodule Detection for Early Screening — AI-powered CXR nodule detection system using Deep Learning for real-time inference.
+            Chest Automated Nodule Detection for Early Screening, AI-powered CXR nodule detection system using Deep Learning for real-time inference.
           </div>
         </div>
         <div className="footer-col">
