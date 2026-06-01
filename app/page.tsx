@@ -14,7 +14,7 @@ const features = [
   {
     icon: FileImage,
     title: 'Multi-Format Support',
-    desc: 'Upload CXR images in JPG, PNG, BMP, or raw DICOM (.dcm) format with automatic processing.',
+    desc: 'Upload CXR images in JPG, PNG, BMP format with automatic processing.',
     color: 'var(--nodule-mass)',
   },
   {
@@ -44,7 +44,7 @@ const features = [
 ];
 
 const steps = [
-  { num: '01', title: 'Upload', desc: 'Drag & drop your CXR scan (DICOM, PNG, JPG or BMP).' },
+  { num: '01', title: 'Upload', desc: 'Drag & drop your CXR scan (PNG, JPG or BMP).' },
   { num: '02', title: 'Detect', desc: 'Hit "Run Detection" and the model infers in seconds.' },
   { num: '03', title: 'Review', desc: 'Inspect annotated results with bounding boxes and export PDF.' },
 ];
@@ -69,7 +69,7 @@ export default function HomePage() {
 
           <p className="hero-desc">
             CHANCE leverages state-of-the-art deep learning to detect nodule masses
-            in chest X-ray scans with high accuracy — supporting DICOM, PNG, JPG and BMP formats.
+            in chest X-ray scans with high accuracy — supporting PNG, JPG and BMP formats.
           </p>
 
           <div className="hero-actions">
