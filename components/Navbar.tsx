@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import {
-  Scan, FileText, User, Download
+  Scan, FileText, User, Download, Menu, X
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -25,6 +26,7 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="header-wrapper">
@@ -42,12 +44,13 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <nav className="header-nav">
+        <nav className={`header-nav ${isMobileMenuOpen ? 'open' : ''}`}>
           {navLinks.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
               href={href}
               className={`nav-link ${pathname === href ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               {Icon && <Icon size={16} />} {label}
             </Link>
@@ -80,6 +83,14 @@ export default function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          <button 
+            className="icon-btn mobile-menu-toggle" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </header>
     </div>
